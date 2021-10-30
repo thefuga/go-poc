@@ -10,6 +10,7 @@ import (
 
 var (
 	ApplicationModule = fx.Options(
+		configs.Module,
 		fiber.Module,
 		user.Module,
 	)

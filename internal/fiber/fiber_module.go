@@ -18,10 +18,14 @@ func NewFiber() *fiber.App {
 	return fiber.New()
 }
 
-func InvokeFiber(app *fiber.App, lifecycle fx.Lifecycle) {
+func InvokeFiber(
+	app *fiber.App,
+	lifecycle fx.Lifecycle,
+	configs *viper.Viper,
+) {
 	lifecycle.Append(fx.Hook{
 		OnStart: func(context.Context) error {
-			go app.Listen(viper.GetString("app.fiber.address"))
+			go app.Listen(configs.GetString("app.fiber.address"))
 			return nil
 		},
 		OnStop: func(context.Context) error { return app.Shutdown() },

@@ -8,11 +8,7 @@ import (
 	"go.uber.org/fx"
 )
 
-var (
-	Module = fx.Provide()
-
-	Invokables = fx.Invoke(InvokeAppConfigs)
-)
+var Invokables = fx.Invoke(InvokeAppConfigs)
 
 func InvokeAppConfigs(lifecycle fx.Lifecycle) {
 	lifecycle.Append(fx.Hook{
