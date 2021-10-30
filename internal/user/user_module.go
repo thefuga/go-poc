@@ -11,6 +11,13 @@ var (
 	Module = fx.Options(
 		repository.Module,
 		http.Module,
+		// This maps unmaped interfaces to implementations without coupling
+		// the actual implementation to the a client module.
+		fx.Provide(
+			func(r *repository.UserRepository) http.UserFinderRepository {
+				return r
+			},
+		),
 	)
 
 	Invokables = fx.Options(

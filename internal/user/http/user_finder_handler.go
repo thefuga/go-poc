@@ -2,7 +2,6 @@ package http
 
 import (
 	"github.com/thefuga/go-template/internal/user/entity"
-	"github.com/thefuga/go-template/internal/user/repository"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -21,7 +20,7 @@ func InvokeUserFinderHandler(handler *UserFinderHandler, app *fiber.App) {
 	app.Get("/users", handler.FindUser)
 }
 
-func NewUserFinderHandler(userFinder *repository.UserRepository) *UserFinderHandler {
+func NewUserFinderHandler(userFinder UserFinderRepository) *UserFinderHandler {
 	return &UserFinderHandler{
 		repository: userFinder,
 	}
