@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"github.com/thefuga/go-template/configs"
 	"github.com/thefuga/go-template/internal/fiber"
 	"github.com/thefuga/go-template/internal/user"
 
@@ -14,6 +15,7 @@ var (
 	)
 
 	ApplicationInvokables = fx.Options(
+		configs.Invokables,
 		fiber.Invokables,
 		user.Invokables,
 	)
