@@ -25,7 +25,7 @@ func InvokeFiber(
 ) {
 	lifecycle.Append(fx.Hook{
 		OnStart: func(context.Context) error {
-			go app.Listen(configs.GetString("app.fiber.address"))
+			go app.Listen(configs.GetString("app.fiber.address")) //nolint
 			return nil
 		},
 		OnStop: func(context.Context) error { return app.Shutdown() },
