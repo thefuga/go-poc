@@ -39,3 +39,20 @@ jobs:
       - run: go vet ./...
       - run: go build -mod vendor -o app.go cmd/app/main.go
 
+  test:
+    name: runs tests
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/app/vendor
+            ./vendor
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+      - run: go test ./...
+
