@@ -14,7 +14,7 @@ jobs:
         uses: golangci/golangci-lint-action@v2
 
   setup:
-    name: setup application
+    name: setup
     needs: golangci-lint
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +31,7 @@ jobs:
       - run: go mod vendor
 
   build:
-    name: build application
+    name: build
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -49,7 +49,7 @@ jobs:
       - run: go build -mod vendor -o app.go cmd/app/main.go
 
   test:
-    name: runs tests
+    name: test
     needs: setup
     runs-on: ubuntu-latest
     steps:
