@@ -4,14 +4,15 @@ import (
 	"context"
 	"errors"
 
+	. "go.uber.org/fx"
+
 	"github.com/spf13/viper"
-	"go.uber.org/fx"
 )
 
-var Invokables = fx.Invoke(InvokeAppConfigs)
+var Invokables = Invoke(InvokeAppConfigs)
 
-func InvokeAppConfigs(lifecycle fx.Lifecycle) {
-	lifecycle.Append(fx.Hook{
+func InvokeAppConfigs(lifecycle Lifecycle) {
+	lifecycle.Append(Hook{
 		OnStart: func(context.Context) error {
 			if err := viper.BindEnv("app.env", "APP_ENV"); err != nil {
 				return err

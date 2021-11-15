@@ -1,15 +1,15 @@
 package http
 
 import (
-	"go.uber.org/fx"
+	. "go.uber.org/fx"
 )
 
 var (
-	Module = fx.Provide(
+	Module = Provide(
 		NewUserFinderHandler,
 	)
 
-	Invokables = fx.Invoke(
+	Invokables = Invoke(
 		InvokeUserFinderHandler,
 	)
 )
