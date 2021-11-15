@@ -4,23 +4,20 @@ import (
 	"github.com/thefuga/go-template/internal/user/http"
 	"github.com/thefuga/go-template/internal/user/repository"
 
-	"go.uber.org/fx"
+	. "go.uber.org/fx"
 )
 
 var (
-	Module = fx.Options(
+	Module = Options(
 		repository.Module,
 		http.Module,
-		// This maps unmaped interfaces to implementations without coupling
-		// the actual implementation to the a client module.
-		fx.Provide(
-			func(r *repository.UserRepository) http.UserFinderRepository {
-				return r
-			},
-		),
+		Provide(Annotate(
+			repository.NewUserRepository,
+			As(new(http.UserFinderRepository)),
+		)),
 	)
 
-	Invokables = fx.Options(
+	Invokables = Options(
 		repository.Invokables,
 		http.Invokables,
 	)
