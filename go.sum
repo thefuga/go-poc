@@ -53,6 +53,7 @@ github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e/go.mod h1:3U/XgcO3hC
 github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da/go.mod h1:Q73ZrmVTwzkszR9V5SSuryQ31EELlFMUz1kKyl939pY=
 github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
 github.com/armon/go-radix v1.0.0/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
+github.com/benbjohnson/clock v1.3.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/bgentry/speakeasy v0.1.0/go.mod h1:+zsyZBPWlz7T6j88CTgSN5bM796AkVf0kBD4zp0CCIs=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghfAqPWnc=
@@ -308,6 +309,8 @@ go.uber.org/fx v1.14.2 h1:xT/BW51pc0D/Jn0Xihb6Z/XrbuSs2GNL56fUF95VneE=
 go.uber.org/fx v1.14.2/go.mod h1:rwjmT7CaZIiLgflUER9FCWCSkDGiRv/VDBxg32Inoy8=
 go.uber.org/fx v1.15.0 h1:kcfBpAm98n0ksanyyZLFE/Q3T7yPi13Ge2liu3TxR+A=
 go.uber.org/fx v1.15.0/go.mod h1:jI3RazQUhGv5KkpZIRv+kuP4CcgX3fnc0qX8bLnzbx8=
+go.uber.org/fx v1.16.0 h1:N8i80+X1DCX+qMRiKzM+jPPZiIiyK/bVCysga3+B+1w=
+go.uber.org/fx v1.16.0/go.mod h1:OMoT5BnXcOaiexlpjtpE4vcAmzyDKyRs9TRYXCzamx8=
 go.uber.org/goleak v1.1.10 h1:z+mqJhf6ss6BSfSM671tgKyZBFPTTJM+HLxnhPC3wu0=
 go.uber.org/goleak v1.1.10/go.mod h1:8a7PlsEVH3e/a/GLqe5IIrQx6GzcnRmZEufDUTk4A7A=
 go.uber.org/goleak v1.1.11/go.mod h1:cwTWslyiVhfpKIDGSZEM2HlOvcqm+tG4zioyIeLoqMQ=
