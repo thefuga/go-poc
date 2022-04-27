@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/thefuga/go-template/internal"
+	"github.com/thefuga/go-poc/internal"
 	"go.uber.org/fx"
 )
 

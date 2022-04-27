@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/thefuga/go-template/internal/user/repository"
+	"github.com/thefuga/go-poc/internal/user/repository"
 )
 
 var _ = Describe("UserRepository", func() {

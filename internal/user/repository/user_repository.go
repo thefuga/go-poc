@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/thefuga/go-template/internal/user/entity"
+	"github.com/thefuga/go-poc/internal/user/entity"
 )
 
 type UserRepository struct {

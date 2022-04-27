@@ -1,4 +1,4 @@
-module github.com/thefuga/go-template
+module github.com/thefuga/go-poc
 
 go 1.18
 

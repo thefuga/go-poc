@@ -1,9 +1,9 @@
 package internal
 
 import (
-	"github.com/thefuga/go-template/configs"
-	"github.com/thefuga/go-template/internal/fiber"
-	"github.com/thefuga/go-template/internal/user"
+	"github.com/thefuga/go-poc/configs"
+	"github.com/thefuga/go-poc/internal/fiber"
+	"github.com/thefuga/go-poc/internal/user"
 
 	. "go.uber.org/fx"
 )
