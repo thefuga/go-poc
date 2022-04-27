@@ -1,23 +1,23 @@
 package user
 
 import (
-	"github.com/thefuga/go-template/internal/user/http"
-	"github.com/thefuga/go-template/internal/user/repository"
+	"github.com/thefuga/go-poc/internal/user/http"
+	"github.com/thefuga/go-poc/internal/user/repository"
 
-	. "go.uber.org/fx"
+	"go.uber.org/fx"
 )
 
 var (
-	Module = Options(
+	Module = fx.Options(
 		repository.Module,
 		http.Module,
-		Provide(Annotate(
+		fx.Provide(fx.Annotate(
 			repository.NewUserRepository,
-			As(new(http.UserFinderRepository)),
+			fx.As(new(http.UserFinderRepository)),
 		)),
 	)
 
-	Invokables = Options(
+	Invokables = fx.Options(
 		repository.Invokables,
 		http.Invokables,
 	)

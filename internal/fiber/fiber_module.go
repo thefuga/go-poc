@@ -3,15 +3,14 @@ package fiber
 import (
 	"context"
 
-	. "go.uber.org/fx"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/viper"
+	"go.uber.org/fx"
 )
 
 var (
-	Module     = Provide(NewFiber)
-	Invokables = Invoke(InvokeFiber)
+	Module     = fx.Provide(NewFiber)
+	Invokables = fx.Invoke(InvokeFiber)
 )
 
 func NewFiber() *fiber.App {
@@ -20,10 +19,10 @@ func NewFiber() *fiber.App {
 
 func InvokeFiber(
 	app *fiber.App,
-	lifecycle Lifecycle,
+	lifecycle fx.Lifecycle,
 	configs *viper.Viper,
 ) {
-	lifecycle.Append(Hook{
+	lifecycle.Append(fx.Hook{
 		OnStart: func(context.Context) error {
 			go app.Listen(configs.GetString("app.fiber.address")) //nolint
 			return nil

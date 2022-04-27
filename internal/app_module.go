@@ -5,17 +5,17 @@ import (
 	"github.com/thefuga/go-poc/internal/fiber"
 	"github.com/thefuga/go-poc/internal/user"
 
-	. "go.uber.org/fx"
+	"go.uber.org/fx"
 )
 
 var (
-	ApplicationModule = Options(
+	ApplicationModule = fx.Options(
 		configs.Module,
 		fiber.Module,
 		user.Module,
 	)
 
-	ApplicationInvokables = Options(
+	ApplicationInvokables = fx.Options(
 		configs.Invokables,
 		fiber.Invokables,
 		user.Invokables,

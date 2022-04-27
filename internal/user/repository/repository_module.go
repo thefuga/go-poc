@@ -1,13 +1,13 @@
 package repository
 
 import (
-	. "go.uber.org/fx"
+	"go.uber.org/fx"
 )
 
 var (
-	Module = Provide(
+	Module = fx.Provide(
 		NewUserRepository,
 	)
 
-	Invokables = Invoke()
+	Invokables = fx.Invoke()
 )
