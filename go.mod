@@ -8,7 +8,7 @@ require (
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.19.0
 	github.com/spf13/viper v1.11.0
-	go.uber.org/fx v1.17.0
+	go.uber.org/fx v1.17.1
 )
 
 require (
