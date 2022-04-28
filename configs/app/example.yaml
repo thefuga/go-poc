@@ -2,3 +2,8 @@ app:
   name: Go Template
   fiber:
     address: localhost:3000
+  kafka:
+    address: localhost:9092
+    consumers:
+      order:
+        timeout: 100
