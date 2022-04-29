@@ -1,56 +1,56 @@
 package consumer
 
 import (
-	"github.com/confluentinc/confluent-kafka-go/kafka"
+	"github.com/thefuga/go-poc/internal/order/event"
 	"go.uber.org/fx"
 )
 
 var Module = fx.Provide(
 	NewConfig,
 	fx.Annotated{
-		Target: NewConsumer,
+		Target: NewConsumer[event.Create],
 		Name:   "creation",
 	},
 	fx.Annotated{
-		Target: NewConsumer,
+		Target: NewConsumer[event.Pay],
 		Name:   "payment",
 	},
 	fx.Annotated{
-		Target: NewConsumer,
+		Target: NewConsumer[event.Cancel],
 		Name:   "cancellation",
 	},
 )
 
 var Invokables = fx.Invoke(
 	fx.Annotate(
-		func(consumer *kafka.Consumer) error {
-			return SubscribeTopics(consumer, []string{"creation"})
+		func(c *Consumer[event.Create]) error {
+			return SubscribeTopics(c.consumer, []string{"creation"})
 		},
 		fx.ParamTags(`name:"creation"`),
 	),
 	fx.Annotate(
-		func(consumer *kafka.Consumer) error {
-			return SubscribeTopics(consumer, []string{"payment"})
+		func(c *Consumer[event.Pay]) error {
+			return SubscribeTopics(c.consumer, []string{"payment"})
 		},
 		fx.ParamTags(`name:"payment"`),
 	),
 	fx.Annotate(
-		func(consumer *kafka.Consumer) error {
-			return SubscribeTopics(consumer, []string{"cancellation"})
+		func(c *Consumer[event.Cancel]) error {
+			return SubscribeTopics(c.consumer, []string{"cancellation"})
 		},
 		fx.ParamTags(`name:"cancellation"`),
 	),
 
 	fx.Annotate(
-		RunConsumer,
-		fx.ParamTags(`name:"creation"`),
+		RunConsumer[event.Create],
+		fx.ParamTags(`name:"creation"`, `name:"creation"`),
 	),
 	fx.Annotate(
-		RunConsumer,
-		fx.ParamTags(`name:"payment"`),
+		RunConsumer[event.Pay],
+		fx.ParamTags(`name:"payment"`, `name:"payment"`),
 	),
 	fx.Annotate(
-		RunConsumer,
-		fx.ParamTags(`name:"cancellation"`),
+		RunConsumer[event.Cancel],
+		fx.ParamTags(`name:"cancellation"`, `name:"cancellation"`),
 	),
 )
