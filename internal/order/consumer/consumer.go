@@ -2,13 +2,20 @@ package consumer
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
 	"time"
+
+	"github.com/thefuga/go-poc/internal/order/channel"
+	"github.com/thefuga/go-poc/internal/order/event"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/spf13/viper"
 	"go.uber.org/fx"
 )
+
+type Consumer[T event.Event] struct {
+	consumer *kafka.Consumer
+}
 
 func NewConfig() *kafka.ConfigMap {
 	return &kafka.ConfigMap{
@@ -18,36 +25,51 @@ func NewConfig() *kafka.ConfigMap {
 	}
 }
 
-func NewConsumer(config *kafka.ConfigMap) (*kafka.Consumer, error) {
-	return kafka.NewConsumer(config)
+func NewConsumer[T event.Event](config *kafka.ConfigMap) (*Consumer[T], error) {
+	consumer, err := kafka.NewConsumer(config)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &Consumer[T]{
+		consumer: consumer,
+	}, nil
 }
 
 func SubscribeTopics(consumer *kafka.Consumer, topics []string) error {
 	return consumer.SubscribeTopics(topics, nil)
 }
 
-func RunConsumer(consumer *kafka.Consumer, lifecycle fx.Lifecycle) {
+func RunConsumer[T event.Event](
+	c *Consumer[T], orderChan channel.OrderEventChannel[T], lifecycle fx.Lifecycle,
+) {
 	lifecycle.Append(fx.Hook{OnStart: func(context.Context) error {
-		go consume(consumer)
+		go c.Consume(orderChan)
 		return nil
 	}})
 }
 
-func consume(consumer *kafka.Consumer) {
+func (c Consumer[T]) Consume(eventChan channel.OrderEventChannel[T]) {
 	timeout := viper.GetDuration("app.kafka.consumers.order.timeout") * time.Millisecond
 
 	for {
-		message, err := consumer.ReadMessage(timeout)
+		message, consumerErr := c.consumer.ReadMessage(timeout)
 
-		if err != nil {
+		if consumerErr != nil {
 			continue
 		}
 
-		fmt.Printf(
-			"Consumed event from topic %s: key = %-10s value = %s\n",
-			*message.TopicPartition.Topic,
-			string(message.Key),
-			string(message.Value),
-		)
+		var event T
+
+		if unmarshalErr := json.Unmarshal(message.Value, &event); unmarshalErr != nil {
+			continue
+		}
+
+		if validationErr := event.Validate(); validationErr != nil {
+			continue
+		}
+
+		eventChan <- event
 	}
 }
