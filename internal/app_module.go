@@ -3,6 +3,7 @@ package internal
 import (
 	"github.com/thefuga/go-poc/configs"
 	"github.com/thefuga/go-poc/internal/fiber"
+	"github.com/thefuga/go-poc/internal/kafka"
 	"github.com/thefuga/go-poc/internal/order"
 	"github.com/thefuga/go-poc/internal/user"
 
@@ -13,6 +14,7 @@ var (
 	ApplicationModule = fx.Options(
 		configs.Module,
 		fiber.Module,
+		kafka.Module,
 		user.Module,
 		order.Module,
 	)
