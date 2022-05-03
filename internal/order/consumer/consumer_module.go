@@ -6,7 +6,6 @@ import (
 )
 
 var Module = fx.Provide(
-	NewConfig,
 	fx.Annotated{
 		Target: NewConsumer[event.Create],
 		Name:   "creation",

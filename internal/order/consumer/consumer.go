@@ -17,14 +17,6 @@ type Consumer[T event.Event] struct {
 	consumer *kafka.Consumer
 }
 
-func NewConfig() *kafka.ConfigMap {
-	return &kafka.ConfigMap{
-		"bootstrap.servers": viper.GetString("app.kafka.address"),
-		"group.id":          "1",
-		"auto.offset.reset": "earliest",
-	}
-}
-
 func NewConsumer[T event.Event](config *kafka.ConfigMap) (*Consumer[T], error) {
 	consumer, err := kafka.NewConsumer(config)
 
