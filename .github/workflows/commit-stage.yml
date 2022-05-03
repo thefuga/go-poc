@@ -69,7 +69,7 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
-      - run: go test internal/...
+      - run: go test ./internal/...
 
   integration-test:
     name: integration-test
@@ -89,4 +89,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
       - run: docker-compose up -d zookeeper broker
-      - run: go test tests/...
+      - run: go test ./tests/...
