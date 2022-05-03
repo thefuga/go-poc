@@ -29,7 +29,7 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Create],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, lifecycle)
+			p.RunProducer(c, "creation", lifecycle)
 		},
 		fx.ParamTags(`name:"creation"`, `name:"producer-creation"`),
 	),
@@ -39,7 +39,7 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Pay],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, lifecycle)
+			p.RunProducer(c, "payment", lifecycle)
 		},
 		fx.ParamTags(`name:"payment"`, `name:"producer-payment"`),
 	),
@@ -49,7 +49,7 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Cancel],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, lifecycle)
+			p.RunProducer(c, "cancellation", lifecycle)
 		},
 		fx.ParamTags(`name:"cancellation"`, `name:"producer-cancellation"`),
 	),

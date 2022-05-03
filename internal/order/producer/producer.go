@@ -41,14 +41,22 @@ func (producer Producer[T]) Report() {
 }
 
 func (producer Producer[T]) RunProducer(
-	eventChan channel.OrderEventChannel[T], lifecycle fx.Lifecycle,
+	eventChan channel.OrderEventChannel[T], topic string, lifecycle fx.Lifecycle,
 ) {
 	lifecycle.Append(fx.Hook{
 		OnStart: func(context.Context) error {
 			go func() {
 				eventChan.Listen(func(event T) {
 					bytes, _ := event.Bytes()
-					producer.producer.Produce(&kafka.Message{Value: bytes}, nil)
+
+					message := &kafka.Message{
+						Value: bytes,
+						TopicPartition: kafka.TopicPartition{
+							Topic: &topic, Partition: kafka.PartitionAny,
+						},
+					}
+
+					fmt.Println(producer.producer.Produce(message, nil))
 				})
 			}()
 			return nil
