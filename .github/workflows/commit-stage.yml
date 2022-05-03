@@ -88,5 +88,5 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
-      - run: docker-compose up -d
+      - run: docker-compose up -d zookeeper broker
       - run: go test tests/...
