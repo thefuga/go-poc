@@ -19,4 +19,17 @@ var Module = fx.Provide(
 		Target: NewOrderChannel[event.Cancel],
 		Name:   "consumer-cancellation",
 	},
+
+	fx.Annotated{
+		Target: NewOrderChannel[event.Create],
+		Name:   "producer-creation",
+	},
+	fx.Annotated{
+		Target: NewOrderChannel[event.Pay],
+		Name:   "producer-payment",
+	},
+	fx.Annotated{
+		Target: NewOrderChannel[event.Cancel],
+		Name:   "producer-cancellation",
+	},
 )
