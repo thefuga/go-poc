@@ -7,17 +7,17 @@ import (
 var Module = fx.Provide(
 	fx.Annotate(
 		NewCreationProcessor,
-		fx.ParamTags(`name:"creation"`),
+		fx.ParamTags(`name:"consumer-creation"`),
 	),
 
 	fx.Annotate(
 		NewPaymentProcessor,
-		fx.ParamTags(`name:"payment"`),
+		fx.ParamTags(`name:"consumer-payment"`),
 	),
 
 	fx.Annotate(
 		NewCancellationProcessor,
-		fx.ParamTags(`name:"cancellation"`),
+		fx.ParamTags(`name:"consumer-cancellation"`),
 	),
 )
 

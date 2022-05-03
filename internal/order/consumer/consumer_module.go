@@ -43,14 +43,14 @@ var Invokables = fx.Invoke(
 
 	fx.Annotate(
 		RunConsumer[event.Create],
-		fx.ParamTags(`name:"creation"`, `name:"creation"`),
+		fx.ParamTags(`name:"creation"`, `name:"consumer-creation"`),
 	),
 	fx.Annotate(
 		RunConsumer[event.Pay],
-		fx.ParamTags(`name:"payment"`, `name:"payment"`),
+		fx.ParamTags(`name:"payment"`, `name:"consumer-payment"`),
 	),
 	fx.Annotate(
 		RunConsumer[event.Cancel],
-		fx.ParamTags(`name:"cancellation"`, `name:"cancellation"`),
+		fx.ParamTags(`name:"cancellation"`, `name:"consumer-cancellation"`),
 	),
 )

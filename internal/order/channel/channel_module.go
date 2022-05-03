@@ -9,14 +9,14 @@ import (
 var Module = fx.Provide(
 	fx.Annotated{
 		Target: NewOrderChannel[event.Create],
-		Name:   "creation",
+		Name:   "consumer-creation",
 	},
 	fx.Annotated{
 		Target: NewOrderChannel[event.Pay],
-		Name:   "payment",
+		Name:   "consumer-payment",
 	},
 	fx.Annotated{
 		Target: NewOrderChannel[event.Cancel],
-		Name:   "cancellation",
+		Name:   "consumer-cancellation",
 	},
 )
