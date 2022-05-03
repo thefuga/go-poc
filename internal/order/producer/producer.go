@@ -40,7 +40,7 @@ func (producer Producer[T]) Report() {
 	}()
 }
 
-func (producer Producer[T]) StartProducing(
+func (producer Producer[T]) RunProducer(
 	eventChan channel.OrderEventChannel[T], lifecycle fx.Lifecycle,
 ) {
 	lifecycle.Append(fx.Hook{
