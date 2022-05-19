@@ -14,6 +14,7 @@ func (c OrderEventChannel[T]) Listen(react func(event T)) {
 		case event := <-c:
 			react(event)
 		default:
+			continue
 		}
 	}
 }
