@@ -33,6 +33,27 @@ With this approach, adapters are completely isolated and are consumed - through 
 
 See the whole user module for complete examples.
 
+### Ports and Adapters
+A quick reference for the ports and adapters present on the application can be found bellow. Detailed documentation is present on their packages.
+
+#### Protobuffers
+Protocol buffers are stores in the [protos](https://github.com/thefuga/go-poc/protos) directory and are managed by [Buf](buf.build/). See their documentation for details.
+
+#### GRPC (server)
+The [GRPC server module](https://github.com/thefuga/go-poc/blob/main/internal/grpc/grpc_module.go) contains only the server initialization and is not related to the application itself.
+Each port (eg. handlers, etc...) will be defined on the GRPC module of their domain, such as the [Order module](https://github.com/thefuga/go-poc/blob/main/internal/order/grpc/grpc_module.go).
+
+#### Kafka
+The [Kafka](https://github.com/thefuga/go-poc/blob/main/internal/kafka/kafka_module.go) provides the Kafka config struct to [producers](https://github.com/thefuga/go-poc/blob/main/internal/order/producer/producer.go) and [consumers](https://github.com/thefuga/go-poc/blob/main/internal/order/consumer/consumer.go).
+
+#### HTTP
+HTTP is handled by [Fiber](https://github.com/gofiber/fiber). The main server setup can be found on Fiber's [module](https://github.com/thefuga/go-poc/blob/main/internal/fiber/fiber_module.go).
+Handlers (i.e. adapters) can be found on the HTTP package of each domain, such as the Order [handler](https://github.com/thefuga/go-poc/blob/main/internal/order/http/handler.go) and [HTTP module](https://github.com/thefuga/go-poc/blob/main/internal/order/http/http_module.go).
+
+#### Tests (integration)
+Integration tests are organized either by domain or by the integration they are testing.
+E.g. [producer-consumer test](https://github.com/thefuga/go-poc/blob/main/tests/order/producer_consumer/producer_consumer_test.go), [grpc test](https://github.com/thefuga/go-poc/blob/main/tests/order/grpc/grpc_test.go).
+
 ## Configs
 
 Configs are managed by [Viper](https://github.com/spf13/viper). They are loaded by FX at the application's startup. The Viper struct is also registered in the container and can be used as a service if needed.
