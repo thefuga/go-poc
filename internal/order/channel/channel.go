@@ -1,3 +1,7 @@
+/*
+package channel holds type-safe conveniences to Order events.
+It also holds the definition of all of the order-event channels. See channel_module.go
+*/
 package channel
 
 import "github.com/thefuga/go-poc/internal/order/event"
