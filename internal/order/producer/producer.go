@@ -11,6 +11,8 @@ import (
 	"go.uber.org/fx"
 )
 
+// Producer is a generic wrapper for the kafka.Producer. It allows the RunProducer
+// method to be bind to an specific event type.
 type Producer[T event.Event] struct {
 	producer *kafka.Producer
 }
@@ -40,6 +42,9 @@ func (producer Producer[T]) Report() {
 	}()
 }
 
+// RunProducer hooks the listening of the producer event channel to the application's
+// lifecycle. In practice, it produces a kafka message from events received by the
+// eventChan, on the given topic.
 func (producer Producer[T]) RunProducer(
 	eventChan channel.OrderEventChannel[T], topic string, lifecycle fx.Lifecycle,
 ) {

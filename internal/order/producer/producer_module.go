@@ -1,3 +1,6 @@
+/*
+producer package TODO
+*/
 package producer
 
 import (
@@ -7,21 +10,23 @@ import (
 	"go.uber.org/fx"
 )
 
+// Module defines the resolutions for processors of each event type.
 var Module = fx.Provide(
 	fx.Annotated{
 		Target: NewProducer[event.Create],
-		Name:   "creation",
+		Name:   event.CreateAnnotation.String(),
 	},
 	fx.Annotated{
 		Target: NewProducer[event.Pay],
-		Name:   "payment",
+		Name:   event.PayAnnotation.String(),
 	},
 	fx.Annotated{
 		Target: NewProducer[event.Cancel],
-		Name:   "cancellation",
+		Name:   event.CancelAnnotation.String(),
 	},
 )
 
+// Invokables defines mappings for channels of each event type.
 var Invokables = fx.Invoke(
 	fx.Annotate(
 		func(
@@ -29,9 +34,9 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Create],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, "creation", lifecycle)
+			p.RunProducer(c, event.CreateAnnotation.String(), lifecycle)
 		},
-		fx.ParamTags(`name:"creation"`, `name:"producer-creation"`),
+		fx.ParamTags(event.CreateAnnotation.Tag(), channel.CreationProducer.Tag()),
 	),
 	fx.Annotate(
 		func(
@@ -39,9 +44,9 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Pay],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, "payment", lifecycle)
+			p.RunProducer(c, event.PayAnnotation.String(), lifecycle)
 		},
-		fx.ParamTags(`name:"payment"`, `name:"producer-payment"`),
+		fx.ParamTags(event.PayAnnotation.Tag(), channel.PaymentProducer.Tag()),
 	),
 	fx.Annotate(
 		func(
@@ -49,8 +54,8 @@ var Invokables = fx.Invoke(
 			c channel.OrderEventChannel[event.Cancel],
 			lifecycle fx.Lifecycle,
 		) {
-			p.RunProducer(c, "cancellation", lifecycle)
+			p.RunProducer(c, event.CancelAnnotation.String(), lifecycle)
 		},
-		fx.ParamTags(`name:"cancellation"`, `name:"producer-cancellation"`),
+		fx.ParamTags(event.CancelAnnotation.Tag(), channel.CancellationProducer.Tag()),
 	),
 )

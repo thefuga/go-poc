@@ -1,6 +1,12 @@
 package event
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/thefuga/go-poc/internal/annotation"
+)
+
+const PayAnnotation = annotation.Annotation("payment")
 
 type Pay struct {
 	OrderID         int `json:"order_id"`

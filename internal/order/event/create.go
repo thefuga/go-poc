@@ -1,9 +1,15 @@
 package event
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/thefuga/go-poc/internal/annotation"
+)
+
+const CreateAnnotation = annotation.Annotation("creation")
 
 type Create struct {
-	OrderID   int `json:"order_id"`
+	UserID    int `json:"user_id"`
 	ProductID int `json:"product_id"`
 }
 
