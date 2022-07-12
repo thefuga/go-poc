@@ -15,6 +15,7 @@ var (
 		consumer.Module,
 		processor.Module,
 		channel.Module,
+		grpc.Module,
 	)
 
 	Invokables = fx.Options(
