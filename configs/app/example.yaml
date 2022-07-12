@@ -2,8 +2,12 @@ app:
   name: Go Template
   fiber:
     address: localhost:3000
+  grpc_server:
+    address: localhost:3001
   kafka:
     address: localhost:9092
     consumers:
       order:
         timeout: 100
+        topics:
+          - orders
