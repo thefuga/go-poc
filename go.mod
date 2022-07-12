@@ -3,14 +3,14 @@ module github.com/thefuga/go-poc
 go 1.18
 
 require (
-	github.com/confluentinc/confluent-kafka-go v1.8.2
+	github.com/confluentinc/confluent-kafka-go v1.9.1
 	github.com/gofiber/fiber/v2 v2.28.0
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.19.0
 	github.com/spf13/viper v1.11.0
 	go.buf.build/grpc/go/thefuga/go-poc v1.3.2
 	go.uber.org/fx v1.17.1
-	google.golang.org/grpc v1.45.0
+	google.golang.org/grpc v1.46.0
 )
 
 require (
@@ -39,7 +39,7 @@ require (
 	golang.org/x/net v0.0.0-20220412020605-290c469a71a5 // indirect
 	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20220407144326-9054f6ed7bac // indirect
+	google.golang.org/genproto v0.0.0-20220503193339-ba3ae3f07e29 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
