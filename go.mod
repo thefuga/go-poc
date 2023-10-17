@@ -10,7 +10,7 @@ require (
 	github.com/spf13/viper v1.11.0
 	go.buf.build/grpc/go/thefuga/go-poc v1.3.2
 	go.uber.org/fx v1.17.1
-	google.golang.org/grpc v1.46.0
+	google.golang.org/grpc v1.59.0
 )
 
 require (
