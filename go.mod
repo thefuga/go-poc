@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/confluentinc/confluent-kafka-go v1.9.1
-	github.com/gofiber/fiber/v2 v2.28.0
+	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.19.0
 	github.com/spf13/viper v1.11.0
