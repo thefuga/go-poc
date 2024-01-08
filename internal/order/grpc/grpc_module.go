@@ -3,7 +3,7 @@ package grpc
 import (
 	"github.com/thefuga/go-poc/internal/order/channel"
 
-	order "go.buf.build/grpc/go/thefuga/go-poc/order/v1"
+	order "buf.build/gen/go/thefuga/go-poc/grpc/go/order/v1/orderv1grpc"
 	"go.uber.org/fx"
 	"google.golang.org/grpc"
 )

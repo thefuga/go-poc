@@ -1,8 +1,8 @@
 package dto
 
 import (
+	proto "buf.build/gen/go/thefuga/go-poc/protocolbuffers/go/order/v1"
 	"github.com/thefuga/go-poc/internal/order/event"
-	proto "go.buf.build/grpc/go/thefuga/go-poc/order/v1"
 )
 
 type (

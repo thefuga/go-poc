@@ -11,8 +11,9 @@ import (
 	"github.com/thefuga/go-poc/internal/order/event"
 	orderHandler "github.com/thefuga/go-poc/internal/order/grpc"
 
+	orderGRPC "buf.build/gen/go/thefuga/go-poc/grpc/go/order/v1/orderv1grpc"
+	orderProto "buf.build/gen/go/thefuga/go-poc/protocolbuffers/go/order/v1"
 	"github.com/spf13/viper"
-	orderGRPC "go.buf.build/grpc/go/thefuga/go-poc/order/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
@@ -85,14 +86,14 @@ var _ = Describe("grpc calls on order handler", func() {
 	Describe("Create method", func() {
 		It("sends a create event to the creation producer channel", func() {
 			var (
-				respChan = make(chan *orderGRPC.CreateResponse, 1)
+				respChan = make(chan *orderProto.CreateResponse, 1)
 				errChan  = make(chan error)
 			)
 
 			go func() {
 				resp, err := OrderClient.Create(
 					context.Background(),
-					&orderGRPC.CreateRequest{UserId: 1, ProductId: 2},
+					&orderProto.CreateRequest{UserId: 1, ProductId: 2},
 				)
 
 				respChan <- resp

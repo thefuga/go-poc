@@ -3,11 +3,10 @@ package grpc
 import (
 	"context"
 
+	order "buf.build/gen/go/thefuga/go-poc/protocolbuffers/go/order/v1"
 	"github.com/thefuga/go-poc/internal/order/channel"
 	"github.com/thefuga/go-poc/internal/order/dto"
 	"github.com/thefuga/go-poc/internal/order/event"
-
-	order "go.buf.build/grpc/go/thefuga/go-poc/order/v1"
 )
 
 type OrderHandler struct {
