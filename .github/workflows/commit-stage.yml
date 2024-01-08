@@ -58,7 +58,7 @@ jobs:
       - run: go vet ./...
       - run: go build -mod vendor -o cmd/app/main -ldflags '-linkmode external -w -extldflags "-static"' cmd/app/main.go
       - name: store built artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: go-poc-bin
           path: cmd/app/main
