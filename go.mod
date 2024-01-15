@@ -8,7 +8,7 @@ require (
 	github.com/confluentinc/confluent-kafka-go v1.9.1
 	github.com/gofiber/fiber/v2 v2.52.0
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.19.0
+	github.com/onsi/gomega v1.30.0
 	github.com/spf13/viper v1.11.0
 	go.uber.org/fx v1.20.1
 	google.golang.org/grpc v1.60.1
@@ -18,6 +18,7 @@ require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/klauspost/compress v1.17.0 // indirect
