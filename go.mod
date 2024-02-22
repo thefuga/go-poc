@@ -6,7 +6,7 @@ require (
 	buf.build/gen/go/thefuga/go-poc/grpc/go v1.3.0-20220711145547-e6891151c45d.2
 	buf.build/gen/go/thefuga/go-poc/protocolbuffers/go v1.32.0-20220711145547-e6891151c45d.1
 	github.com/confluentinc/confluent-kafka-go v1.9.1
-	github.com/gofiber/fiber/v2 v2.52.0
+	github.com/gofiber/fiber/v2 v2.52.1
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.19.0
 	github.com/spf13/viper v1.11.0
