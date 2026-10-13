@@ -1,6 +1,6 @@
 module github.com/thefuga/go-poc
 
-go 1.18
+go 1.25.0
 
 require (
 	buf.build/gen/go/thefuga/go-poc/grpc/go v1.3.0-20220711145547-e6891151c45d.2
@@ -42,9 +42,9 @@ require (
 	go.uber.org/dig v1.17.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.23.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
-	golang.org/x/sys v0.15.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/text v0.37.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231002182017-d307bd883b97 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
