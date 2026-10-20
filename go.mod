@@ -1,6 +1,6 @@
 module github.com/thefuga/go-poc
 
-go 1.18
+go 1.24
 
 require (
 	buf.build/gen/go/thefuga/go-poc/grpc/go v1.3.0-20220711145547-e6891151c45d.2
@@ -20,7 +20,7 @@ require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/uuid v1.5.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/klauspost/compress v1.17.0 // indirect
+	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
